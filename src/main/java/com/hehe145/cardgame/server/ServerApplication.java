@@ -1,4 +1,4 @@
-package com.hehe145.TheCardGame.server;
+package com.hehe145.cardgame.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

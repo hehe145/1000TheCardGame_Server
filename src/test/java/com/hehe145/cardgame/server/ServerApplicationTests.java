@@ -1,4 +1,4 @@
-package com.hehe145.TheCardGame.server;
+package com.hehe145.cardgame.server;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
