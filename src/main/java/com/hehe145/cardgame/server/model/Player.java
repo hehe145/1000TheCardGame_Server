@@ -16,5 +16,13 @@ public class Player {
     @Column( name = "player_name")
     private String playerName;
 
+    @Column( name = "password")
+    private String password;
+
+    @Column( name = "ranking_points")
+    private int rankingPoints;
+
+
+
 
 }
