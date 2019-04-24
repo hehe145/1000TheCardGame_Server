@@ -1,29 +1,43 @@
 package com.hehe145.cardgame.server.rest;
 
+import com.hehe145.cardgame.server.model.Message;
+import com.hehe145.cardgame.server.services.PlayerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+/**
+ * @author Robert Tarczyński
+ * Class responsible for login and registration requests
+ */
 
 @RestController
 @RequestMapping("/login")
 public class LoginController {
 
+    private PlayerService playerService;
+
+    @Autowired
+    public LoginController(PlayerService playerService) {
+        this.playerService = playerService;
+    }
+
+    //-----------------------------------------------------------------
+
     @GetMapping("/test")
-    public String getTest() {
-        return "Succes";
+    public Message getTest() {
+        return new Message("Test successfull.", 280, Message.MessageType.SUCCESS);
     }
 
     @GetMapping("/")
-    public String login() {
+    public Message login( @RequestBody String playerName, @RequestBody String password) {
 
-
-
-        return "Succesful";
+        return playerService.login( playerName, password);
     }
 
     @PostMapping( "/register")
-    public String register(@RequestBody String login, @RequestBody String password) {
+    public Message register( @RequestBody String playerName, @RequestBody String password) {
 
-
-        return "Registered";
+        return playerService.register( playerName, password);
     }
 
 

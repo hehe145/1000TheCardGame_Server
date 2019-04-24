@@ -4,9 +4,8 @@ import com.hehe145.cardgame.server.model.PlayerBasic;
 import com.hehe145.cardgame.server.model.Table;
 import org.springframework.stereotype.Service;
 
-@Service
 public interface GameService {
     void addTable(String tableName);
 
-    void joinToTable(PlayerBasic player, Table table);
+    void joinToTable(PlayerBasic player, Table table, String remoteAddr);
 }

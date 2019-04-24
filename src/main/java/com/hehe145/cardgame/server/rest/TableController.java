@@ -1,5 +1,6 @@
 package com.hehe145.cardgame.server.rest;
 
+import com.hehe145.cardgame.server.model.Message;
 import com.hehe145.cardgame.server.model.Table;
 import com.hehe145.cardgame.server.services.ServiceTable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class TableController {
     }
 
     @GetMapping( "/test")
-    public String getTest() {
-        return "Succes";
+    public Message getTest() {
+        return new Message("Test successfull", 200, Message.MessageType.SUCCESS);
     }
 
 
@@ -30,8 +31,8 @@ public class TableController {
     }
 
 
-    @PostMapping( "/addTable")
-    public Table addTable( @RequestBody String tableName) {
-        return serviceTable.addTable( tableName);
+    @PostMapping("/addTable")
+    public Message addTable(@RequestBody Table table) {
+        return serviceTable.addTable( table.getTableName());
     }
 }
