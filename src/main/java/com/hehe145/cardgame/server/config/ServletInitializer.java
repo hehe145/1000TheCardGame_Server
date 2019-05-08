@@ -2,7 +2,8 @@ package com.hehe145.cardgame.server.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class ServletInicializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class ServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[0];
@@ -15,6 +16,6 @@ public class ServletInicializer extends AbstractAnnotationConfigDispatcherServle
 
     @Override
     protected String[] getServletMappings() {
-        return new String[] {"/"};
+        return new String[] {"/api/*"};
     }
 }

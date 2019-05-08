@@ -21,21 +21,19 @@ public class LoginController {
         this.playerService = playerService;
     }
 
-    //-----------------------------------------------------------------
-
     @GetMapping("/test")
     public Message getTest() {
         return new Message("Test successfull.", 280, Message.MessageType.SUCCESS);
     }
 
-    @GetMapping("/")
-    public Message login( @RequestBody String playerName, @RequestBody String password) {
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public Message login( @ModelAttribute("playerName") String playerName, @ModelAttribute("password") String password) {
 
         return playerService.login( playerName, password);
     }
 
-    @PostMapping( "/register")
-    public Message register( @RequestBody String playerName, @RequestBody String password) {
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public Message register( @ModelAttribute("playerName") String playerName, @ModelAttribute("password") String password) {
 
         return playerService.register( playerName, password);
     }

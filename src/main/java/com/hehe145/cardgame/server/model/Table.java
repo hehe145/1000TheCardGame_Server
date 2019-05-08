@@ -9,12 +9,13 @@ public class Table {
     private List<PlayerBasic> playerList;
     private boolean gameStarted;
 
-
-
     public Table(String tableName) {
         this.tableName = tableName;
         this.playerList = new ArrayList<>();
         this.gameStarted = false;
+    }
+
+    public Table() {
     }
 
     public String getTableName() {

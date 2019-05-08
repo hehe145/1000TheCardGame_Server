@@ -4,8 +4,11 @@ import com.hehe145.cardgame.server.model.Message;
 import com.hehe145.cardgame.server.model.Table;
 import com.hehe145.cardgame.server.services.GameService;
 import com.hehe145.cardgame.server.services.ServiceTable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +17,12 @@ public class ServiceTableImpl implements ServiceTable {
 
     private List<Table> tableList;
     private GameService gameService;
+
+    @Autowired
+    public ServiceTableImpl(List<Table> tableList, GameService gameService) {
+        this.tableList = tableList;
+        this.gameService = gameService;
+    }
 
     @Override
     public List<Table> getTables() {
@@ -35,6 +44,12 @@ public class ServiceTableImpl implements ServiceTable {
     }
 
     private boolean isTableExist(String tableName) {
+
         return ! tableList.stream().filter( table -> table.getTableName().equals( tableName)).collect(Collectors.toList()).isEmpty();
+    }
+
+    @Bean
+    private List<Table> tableList(){
+        return new ArrayList<>();
     }
 }

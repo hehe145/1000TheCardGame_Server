@@ -3,7 +3,11 @@ package com.hehe145.cardgame.server.model;
 public class Card {
 
     public enum Suite {
-        DIAMOND, HEART, SPADES, CLUB, NONE
+        DIAMOND(80), HEART(100), SPADES(40), CLUB(60), NONE(0);
+
+        private int value;
+        public int value() {return value;}
+        Suite(int value) {this.value = value;}
     }
     public enum Rank {
         NINE(0), JACK(2), QUEEN(3), KING(4), TEN(10), ACE(11);

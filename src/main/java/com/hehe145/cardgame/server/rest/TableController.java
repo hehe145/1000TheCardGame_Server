@@ -25,13 +25,13 @@ public class TableController {
     }
 
 
-    @GetMapping( "/getTables")
+    @GetMapping( "/")
     public List<Table> getTables() {
         return serviceTable.getTables();
     }
 
 
-    @PostMapping("/addTable")
+    @PostMapping("/")
     public Message addTable(@RequestBody Table table) {
         return serviceTable.addTable( table.getTableName());
     }
