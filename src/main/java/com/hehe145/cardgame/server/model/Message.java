@@ -2,18 +2,19 @@ package com.hehe145.cardgame.server.model;
 
 public class Message {
 
-    public enum MessageType {
-        ERROR, SUCCESS
+    public enum MessageCode {
+       PLAYER_REGISTERED, PLAYER_LOGIN, PLAYER_LOGOUT, TABLE_ADDED, TABLE_EXIST, TABLE_FULL, JOINED_TO_TABLE, LEFT_TABLE, WRONG_LOGIN_OR_PASSWORD, PLAYER_EXIST
     }
 
     private String message;
-    private int code;
-    private MessageType messageType;
+    private MessageCode code;
 
-    public Message(String message, int code, MessageType messageType) {
+    public Message() {
+    }
+
+    public Message(String message, MessageCode code) {
         this.message = message;
         this.code = code;
-        this.messageType = messageType;
     }
 
     public String getMessage() {
@@ -24,19 +25,11 @@ public class Message {
         this.message = message;
     }
 
-    public int getCode() {
+    public MessageCode getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(MessageCode code) {
         this.code = code;
-    }
-
-    public MessageType getMessageType() {
-        return messageType;
-    }
-
-    public void setMessageType(MessageType messageType) {
-        this.messageType = messageType;
     }
 }

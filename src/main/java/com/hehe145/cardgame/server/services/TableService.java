@@ -6,7 +6,7 @@ import com.hehe145.cardgame.server.model.Table;
 import java.util.List;
 
 
-public interface ServiceTable {
+public interface TableService {
 
     List<Table> getTables();
 

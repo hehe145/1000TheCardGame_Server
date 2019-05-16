@@ -2,7 +2,7 @@ package com.hehe145.cardgame.server.rest;
 
 import com.hehe145.cardgame.server.model.Message;
 import com.hehe145.cardgame.server.model.Table;
-import com.hehe145.cardgame.server.services.ServiceTable;
+import com.hehe145.cardgame.server.services.TableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,10 +12,10 @@ import java.util.List;
 @RequestMapping( "/table")
 public class TableController {
 
-    private ServiceTable serviceTable;
+    private TableService serviceTable;
 
     @Autowired
-    public TableController(ServiceTable serviceTable) {
+    public TableController(TableService serviceTable) {
         this.serviceTable = serviceTable;
     }
 

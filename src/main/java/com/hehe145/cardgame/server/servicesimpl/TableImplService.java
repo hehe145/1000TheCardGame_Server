@@ -3,7 +3,7 @@ package com.hehe145.cardgame.server.servicesimpl;
 import com.hehe145.cardgame.server.model.Message;
 import com.hehe145.cardgame.server.model.Table;
 import com.hehe145.cardgame.server.services.GameService;
-import com.hehe145.cardgame.server.services.ServiceTable;
+import com.hehe145.cardgame.server.services.TableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ServiceTableImpl implements ServiceTable {
+public class TableImplService implements TableService {
 
     private List<Table> tableList;
     private GameService gameService;
 
     @Autowired
-    public ServiceTableImpl(List<Table> tableList, GameService gameService) {
+    public TableImplService(List<Table> tableList, GameService gameService) {
         this.tableList = tableList;
         this.gameService = gameService;
     }
