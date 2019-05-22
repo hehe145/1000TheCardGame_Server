@@ -18,14 +18,18 @@ public class GameController {
 
     @GetMapping("/test")
     public Message getTest() {
-        return new Message("Test successfull.", 280, Message.MessageType.SUCCESS);
+        return new Message("Test successfull.", Message.MessageCode.TEST_SUCCESSFUL);
     }
 
     @PostMapping("/join")
-    public String joinToTable(@RequestBody PlayerBasic player, @RequestBody Table table, HttpServletRequest request) {
-
+    public Message joinToTable( @RequestBody PlayerBasic player, @RequestBody Table table, HttpServletRequest request) {
+        if (true)
+            return new Message(player.getPlayerName() + " " + table.getTableName(), Message.MessageCode.PLAYER_EXIST);
         gameService.joinToTable(player, table, request.getRemoteAddr());
-        return "Joined";
+        return new Message("Joined to table '" + table.getTableName() + "'", Message.MessageCode.JOINED_TO_TABLE);
     }
 
+
+//    @PostMapping("/{tableName}/bid")
+//    public Message bid(  )
 }

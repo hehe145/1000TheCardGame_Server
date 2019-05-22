@@ -50,6 +50,11 @@ public class PlayerServiceImpl implements PlayerService {
         return new Message("Player " + playerName + " logged in!", Message.MessageCode.PLAYER_LOGIN);
     }
 
+    @Override
+    public Message logout(String playerName) {
+        throw new UnsupportedOperationException("Not implemetted");
+    }
+
     private String getHashedPassword(String password) {
         return Hashing.sha256()
                 .hashString(password, StandardCharsets.UTF_8)

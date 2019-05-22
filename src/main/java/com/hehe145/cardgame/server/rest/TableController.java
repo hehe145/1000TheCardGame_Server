@@ -21,7 +21,7 @@ public class TableController {
 
     @GetMapping( "/test")
     public Message getTest() {
-        return new Message("Test successfull", 200, Message.MessageType.SUCCESS);
+        return new Message("Test successfull", Message.MessageCode.TEST_SUCCESSFUL);
     }
 
 
@@ -35,4 +35,6 @@ public class TableController {
     public Message addTable(@RequestBody Table table) {
         return serviceTable.addTable( table.getTableName());
     }
+
+
 }

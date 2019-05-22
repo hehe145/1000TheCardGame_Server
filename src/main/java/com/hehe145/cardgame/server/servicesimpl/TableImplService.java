@@ -34,13 +34,13 @@ public class TableImplService implements TableService {
     public Message addTable(String tableName) {
 
         if ( isTableExist( tableName)) {
-            return new Message("Table with that name exist", 110, Message.MessageType.ERROR);
+            return new Message("Table with that name exist",  Message.MessageCode.TABLE_EXIST);
         }
 
         tableList.add( new Table( tableName));
         gameService.addTable( tableName);
 
-        return  new Message("New table successfully added", 210, Message.MessageType.SUCCESS);     //New table successfully added
+        return  new Message("New table successfully added", Message.MessageCode.TABLE_ADDED);     //New table successfully added
     }
 
     private boolean isTableExist(String tableName) {

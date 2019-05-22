@@ -11,4 +11,6 @@ public interface PlayerService {
     Message register(String playerName, String password);
 
     Message login(String playerName, String password);
+
+    Message logout(String playerName);
 }

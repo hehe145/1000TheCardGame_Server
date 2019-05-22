@@ -1,11 +1,10 @@
 package com.hehe145.cardgame.server.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -13,7 +12,9 @@ import javax.persistence.Table;
 public class Player {
 
     @Id
-    private Integer ID;
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @Column(name = "player_id")
+    private Integer Id;
 
     @Column( name = "player_name")
     private String playerName;
@@ -27,6 +28,14 @@ public class Player {
     @Transient
     private Game game;
 
+    @ManyToMany(cascade = { CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH })
+    @JoinTable(
+            name = "player_role",
+            joinColumns = { @JoinColumn(name = "player_id") },
+            inverseJoinColumns = { @JoinColumn(name = "role_id") }
+    )
+    Set<Role> roles = new HashSet<>();
+
     public Player() {
     }
 
@@ -35,12 +44,21 @@ public class Player {
         this.password = password;
     }
 
-    public Integer getID() {
-        return ID;
+
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setID(Integer ID) {
-        this.ID = ID;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer Id) {
+        this.Id = Id;
     }
 
     public String getPlayerName() {
